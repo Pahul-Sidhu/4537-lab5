@@ -2,18 +2,25 @@ const mysql2 = require("mysql2");
 const http = require("http");
 const url = require("url");
 const port = 8000;
-require('dotenv').config()
+require("dotenv").config();
 const connection = mysql2.createConnection(process.env.DATABASE_URL);
 
-connection.connect((err) => {
+// connection.connect((err) => {
+//   if (err) throw err;
+//   console.log("Connected to MySQL Server!");
+//   let query =
+//     "CREATE TABLE IF NOT EXISTS `patients` ( `patientID` INT (11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `dateOfBirth` datetime  , PRIMARY KEY (`patientID`)) ENGINE = InnoDB;";
+//   connection.query(query, (err, result) => {
+//     if (err) throw err;
+//     console.log("Table created!");
+//   });
+// });
+
+let query =
+  "CREATE TABLE IF NOT EXISTS `patients` ( `patientID` INT (11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `dateOfBirth` datetime  , PRIMARY KEY (`patientID`)) ENGINE = InnoDB;";
+connection.query(query, (err, result) => {
   if (err) throw err;
-  console.log("Connected to MySQL Server!");
-  let query =
-    "CREATE TABLE IF NOT EXISTS `patients` ( `patientID` INT (11) NOT NULL AUTO_INCREMENT , `name` VARCHAR(100) NOT NULL , `dateOfBirth` datetime  , PRIMARY KEY (`patientID`)) ENGINE = InnoDB;";
-  connection.query(query, (err, result) => {
-    if (err) throw err;
-    console.log("Table created!");
-  });
+  console.log("Table created!");
 });
 
 const server = http.createServer((req, res) => {
