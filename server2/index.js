@@ -2,8 +2,8 @@ const mysql = require("mysql2");
 const http = require("http");
 const url = require("url");
 const port = 8000;
-
-const connection = mysql.createConnection('mysql://f1l8o1bb8jacuz5c7y2x:pscale_pw_5mZwRdrXnUISWDVldg3ihAyqRfZWaSV4LvQdPlbNliE@aws.connect.psdb.cloud/bcitsql?ssl={"rejectUnauthorized":true}');
+require('dotenv').config()
+const connection = mysql.createConnection(process.env.DATABASE_URL);
 
 connection.connect((err) => {
   if (err) throw err;
