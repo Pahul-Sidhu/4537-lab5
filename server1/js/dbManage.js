@@ -11,7 +11,7 @@ const queryError = "Invalid query";
 const noData = "No data found";
 
 document.getElementById("insert").addEventListener("click", async function () {
-  const response = await fetch("http://localhost:8000/insert", {
+  const response = await fetch("https://lab5backend.onrender.com/insert", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -26,7 +26,7 @@ document.getElementById("insert").addEventListener("click", async function () {
 document.getElementById("query").addEventListener("click", async function () {
   const text = document.getElementById("text-area").value;
   if (text.trim().toUpperCase().startsWith("INSERT")) {
-    const response = await fetch("http://localhost:8000/query", {
+    const response = await fetch("https://lab5backend.onrender.com/query", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ document.getElementById("query").addEventListener("click", async function () {
     document.getElementById("notify").innerHTML = res.message;
   } else if(text.trim().toUpperCase().startsWith("SELECT")){
     try {
-      const response = await fetch(`http://localhost:8000/queryRead/${text}`, {
+      const response = await fetch(`https://lab5backend.onrender.com/queryRead/${text}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
