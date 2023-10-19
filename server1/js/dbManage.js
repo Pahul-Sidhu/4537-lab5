@@ -38,7 +38,7 @@ document.getElementById("query").addEventListener("click", async function () {
     document.getElementById("notify").innerHTML = res.message;
   } else if(text.trim().toUpperCase().startsWith("SELECT")){
     try {
-      const response = await fetch(`https://lab5backend.onrender.com/queryRead/${text}`, {
+      const response = await fetch(`https://lab5backend.onrender.com/queryRead/${encodeURIComponent(text)}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
